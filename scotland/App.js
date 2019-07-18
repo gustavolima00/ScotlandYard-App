@@ -1,28 +1,23 @@
 import React from 'react';
-import { 
-  StyleSheet, 
-  Text, 
-  View, 
-  Button 
-} from 'react-native';
+import GameScreen from './src/screens/GameScreen';
+import InicialScreen from './src/screens/InicialScreen';
 
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Button
-        title="Button"
-      />
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const RootStack =  createStackNavigator({ 
+  InicialScreen:{ 
+    screen:InicialScreen,
+    navigationOptions: ({ navigation }) => ({
+      header: null,        
+    }), 
   },
+  GameScreen:{ 
+    screen:GameScreen,
+    navigationOptions: ({ navigation }) => ({
+      header: null,        
+    }), 
+  }
 });
+const App = createAppContainer(RootStack);
+export default App;
+
