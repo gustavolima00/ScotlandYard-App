@@ -3,12 +3,12 @@ import { createBottomTabNavigator } from 'react-navigation';
 import Hints from "./game_menus/Hints";
 import Map from "./game_menus/Map";
 import Case from "./game_menus/Case";
+import Options from "./game_menus/Options";
 
 import { YellowBox , Image, StyleSheet, View, Text } from 'react-native'
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated'])
-import { ScreenOrientation } from 'expo';
 
-const MainScreen = createBottomTabNavigator({
+const GameScreem = createBottomTabNavigator({
     Map: {
         screen: Map,
         navigationOptions: {
@@ -17,18 +17,18 @@ const MainScreen = createBottomTabNavigator({
                 focused ? 
                 <View style={styles.container}>
                     <Image
-                        source={{uri:'https://i.imgur.com/VKqgvdo.png'}}
+                        source={{uri:'https://i.imgur.com/VN7xFcZ.png'}}
                         style={styles.icon}
                     />
-                    <Text style={styles.icon_text}> Jogo </Text>
+                    <Text style={styles.icon_text}> Mapa </Text>
                 </View>
                   :
                 <View style={styles.container}>
                     <Image
-                        source={{uri:'https://i.imgur.com/bGiwXQH.png'}}
+                        source={{uri:'https://i.imgur.com/Cdx8Oap.png'}}
                         style={styles.icon}
                     />
-                    <Text style={styles.icon_text}> Jogo </Text>
+                    <Text style={styles.icon_text}> Mapa </Text>
                 </View>
             )
         }
@@ -41,18 +41,18 @@ const MainScreen = createBottomTabNavigator({
                 focused ? 
                 <View style={styles.container}>
                     <Image
-                        source={{uri:'https://i.imgur.com/zGYisSu.png'}}
+                        source={{uri:'https://i.imgur.com/IfYIvVn.png'}}
                         style={styles.icon}
                     />
-                    <Text style={styles.icon_text}> Dicas </Text>
+                    <Text style={styles.icon_text}> Pistas </Text>
                 </View>
                   :
                 <View style={styles.container}>
                     <Image
-                        source={{uri:'https://i.imgur.com/TB3JxT7.png'}}
+                        source={{uri:'https://i.imgur.com/Xfsn9sg.png'}}
                         style={styles.icon}
                     />
-                    <Text style={styles.icon_text}> Dicas </Text>
+                    <Text style={styles.icon_text}> Pistas </Text>
                 </View>
             )
         }
@@ -65,18 +65,42 @@ const MainScreen = createBottomTabNavigator({
                 focused ? 
                 <View style={styles.container}>
                     <Image
-                        source={{uri:'https://i.imgur.com/zGYisSu.png'}}
+                        source={{uri:'https://i.imgur.com/WcmmhEa.png'}}
                         style={styles.icon}
                     />
-                    <Text style={styles.icon_text}> Dicas </Text>
+                    <Text style={styles.icon_text}> Caso </Text>
                 </View>
                   :
                 <View style={styles.container}>
                     <Image
-                        source={{uri:'https://i.imgur.com/TB3JxT7.png'}}
+                        source={{uri:'https://i.imgur.com/etIoXJJ.png'}}
                         style={styles.icon}
                     />
-                    <Text style={styles.icon_text}> Dicas </Text>
+                    <Text style={styles.icon_text}> Caso </Text>
+                </View>
+            )
+        }
+    },
+    Options: {
+        screen: Options,
+        navigationOptions: {
+            tabBarLabel: 'Configurações',
+            tabBarIcon: ({ focused }) => (
+                focused ? 
+                <View style={styles.container}>
+                    <Image
+                        source={{uri:'https://i.imgur.com/cHkZe0E.png'}}
+                        style={styles.icon}
+                    />
+                    <Text style={styles.icon_text}> Configurações </Text>
+                </View>
+                  :
+                <View style={styles.container}>
+                    <Image
+                        source={{uri:'https://i.imgur.com/F8yvimH.png'}}
+                        style={styles.icon}
+                    />
+                    <Text style={styles.icon_text}> Configurações </Text>
                 </View>
             )
         }
@@ -86,7 +110,7 @@ const MainScreen = createBottomTabNavigator({
         showIcon: true,
         showLabel: false,
         style: {
-            //backgroundColor: '#49515f',
+            backgroundColor: '#E08E79',
         },
         tabStyle: {
             height: 50,
@@ -94,7 +118,7 @@ const MainScreen = createBottomTabNavigator({
     },
     animationEnabled: true,
 });
-export default MainScreen;
+export default GameScreem;
 
 const styles = StyleSheet.create({
     icon: {
@@ -104,10 +128,14 @@ const styles = StyleSheet.create({
     icon_text: {
         textAlign: 'center',
         fontSize: 10,
+        color:'#ECE5CE',
     },
     container:{
+        width: 70, 
+        height: 40,  
         justifyContent: 'center',
         alignItems: 'center',
-        //backgroundColor: 'blue'
+        //backgroundColor: '#E5E5E5',
+        borderRadius:5,
     }
 })

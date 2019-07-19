@@ -6,12 +6,12 @@ import {
     StatusBar
 } from "react-native";
 
-export default class Hints extends Component {
+export default class Options extends Component {
     render() {
         return (
             <View style={styles.container}>
               <StatusBar hidden={true} />
-                <Text style={styles.text_out}> Pistas </Text>
+                <Text style={styles.text_out}> Map </Text>
             </View>
         )
     }

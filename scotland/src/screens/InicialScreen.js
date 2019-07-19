@@ -9,7 +9,7 @@ import {
     TouchableHighlight,
 } from "react-native";
 import axios from 'axios';
-import { onSignIn } from "../helpers/AuthMethods";
+import { storeCode, getCode } from "../helpers/AuthMethods";
 
 const API_URL = 'http://5d30fff445e2b00014d93944.mockapi.io/api/v1'
 export default class InicialScreen extends Component {
@@ -17,29 +17,55 @@ export default class InicialScreen extends Component {
         super(props);
         this.state = { 
             name: '',
-            code: '',
+            game_code: '',
         };
       }
-
-      login = async () => {
-        const login_path = `${API_URL}/token-obtain/`;
+    componentWillMount() {
+        getCode()
+            .then(res =>{ 
+                this.setState({ game_code: res })
+            })
+            .catch(err => alert(err));
+    }
+    create_game = async () => {
+        const create_game_path = `${API_URL}/create_game/`;
         var self = this;
-        axios.post(login_path ,{
+        axios.post(create_game_path ,{
             'username': this.state.name,
         })
         .then (function (response) {
             console.log('response.data', response.data);
             console.log('response.status', response.status);
             if(response.status>= 200 && response.status<300){
-                onSignIn(response.data.token);
-                console.log(response.data.token)
+                storeCode(response.data.game_code);
+                console.log(response.data.game_code)
                 self.props.navigation.navigate('GameScreen');
             }
         })
         .catch(function (error) {
             console.log(error);
-		})
-	}
+        })
+    }
+    join_game = async () => {
+        const join_game_path = `${API_URL}/join_game/`;
+        var self = this;
+        axios.post(join_game_path ,{
+            'username': this.state.name,
+            'game_code': this.state.game_code,
+        })
+        .then (function (response) {
+            console.log('response.data', response.data);
+            console.log('response.status', response.status);
+            if(response.status>= 200 && response.status<300){
+                storeCode(response.data.game_code);
+                console.log(response.data.game_code)
+                self.props.navigation.navigate('GameScreen');
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+    }
     render() {
         return (
             <View style={styles.container}>
@@ -51,18 +77,24 @@ export default class InicialScreen extends Component {
                     />
                 <Text style={styles.title }> Scotland Yard </Text>
                 </View>
-                <View style={styles.form_container}>
                     <View style={styles.input_container}>
                         <Text style={styles.text_out}> Nome: </Text>
                         <TextInput
                             style={styles.input}
                             onChangeText={(name) => this.setState({name})}
-                            value={this.state.text}
+                            value={this.state.name}
                         />
+                        <Text style={styles.text_out}> Código do jogo: </Text>
+                        <TextInput
+                            style={styles.input}
+                            onChangeText={(name) => this.setState({name})}
+                            value={this.state.game_code}
+                        />
+
                     </View>
                     <View style={styles.buttons_container}>
                         <TouchableHighlight 
-                            onPress={this.login} 
+                            onPress={this.create_game} 
                             underlayColor="#E5E5E5"
                             style={styles.button}
                         >
@@ -71,7 +103,7 @@ export default class InicialScreen extends Component {
                             </View>
                         </TouchableHighlight>
                         <TouchableHighlight 
-                            onPress={this._onPressButton} 
+                            onPress={this.join_game} 
                             underlayColor="#E5E5E5"
                             style={styles.button}
                         >
@@ -80,7 +112,6 @@ export default class InicialScreen extends Component {
                             </View>
                         </TouchableHighlight>
                     </View>  
-                </View>
             </View>
         )
     }
@@ -97,13 +128,11 @@ const styles = StyleSheet.create({
   },
   image_container: {
     justifyContent: 'space-around',
-    height: '50%',
     width: '100%',
     alignItems: 'center',
   },
   form_container: {
     justifyContent: 'space-around',
-    height: '50%',
     width: '90%',
     alignItems: 'center',
   },
@@ -120,21 +149,21 @@ const styles = StyleSheet.create({
   input : {
     padding:10,
     width: 450, 
-    height: 50,
+    height: 40,
     backgroundColor: "#E5E5E5",
     borderRadius:15,
   },
   button : {
-    width: 200, 
-    height: 60,
+    width: 180, 
+    height: 50,
     backgroundColor: "#774F38",
     borderRadius:18,
     justifyContent: 'center',
     alignItems: 'center',
   },
   image: {
-    width: 120, 
-    height: 130,
+    width: 70, 
+    height: 80,
   },
   title:{
     fontWeight: 'bold',
@@ -153,3 +182,6 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   }
 });
+
+
+

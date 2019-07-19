@@ -1,10 +1,10 @@
 import { AsyncStorage } from 'react-native';
 
-export const TOKEN_KEY = "@tokenKey:key";
+export const GAME_CODE = "@tokenKey:key";
 
-export const onSignIn = async (token) => {
+export const storeCode = async (code) => {
     try{
-        await AsyncStorage.setItem(TOKEN_KEY, token);
+        await AsyncStorage.setItem(GAME_CODE, code);
         console.log('Saved on Storage.')
     }
         catch(exception) {
@@ -12,9 +12,9 @@ export const onSignIn = async (token) => {
     }
 }
 
-export const onSignOut = async () => {
+export const discarteCode = async () => {
     try {
-        await AsyncStorage.removeItem(TOKEN_KEY);
+        await AsyncStorage.removeItem(GAME_CODE);
         console.log('Storage Removed.')
         return true;
     }
@@ -24,25 +24,14 @@ export const onSignOut = async () => {
     }
 }
 
-export const isSignedIn = async () => {
+export const getCode = async () => {
     try{
-        const token = await AsyncStorage.getItem(TOKEN_KEY);
-        return (token !== null) ? true : false;
+        const code = await AsyncStorage.getItem(GAME_CODE);
+        console.log('GAME_CODE', code)
+        return (code !== null) ? code : null;
     }
     catch(exception){
-        console.log('Fail to check if is signed in.')
-        return false;
-    }
-};
-
-export const getUserToken = async () => {
-    try{
-        const token = await AsyncStorage.getItem(TOKEN_KEY);
-        console.log('TOKEN', token)
-        return (token !== null) ? token : null;
-    }
-    catch(exception){
-        console.log('Fail to get user token.')
+        console.log('Fail to get code.')
         return null;
     }
 };
