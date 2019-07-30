@@ -3,15 +3,13 @@ import {
     View, 
     Text,
     StyleSheet,
-    StatusBar
 } from "react-native";
 
-export default class Options extends Component {
+export default class MainScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-              <StatusBar hidden={true} />
-                <Text style={styles.text_out}> Map </Text>
+                <Text style={styles.text_out}> MainScreen </Text>
             </View>
         )
     }
