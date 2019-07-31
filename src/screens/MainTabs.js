@@ -1,20 +1,48 @@
-import React, { Component } from "react";
-import { 
-    View,
-} from "react-native";
-import Button1 from '../components/Button1'
-import {container, text} from '../style/Styles'
-import { onSignOut } from "../helpers/AuthMethods";
 
-export default class MainTabs extends Component {
-  signOut = async () => {
-    this.props.navigation.navigate('MainScreen')
-  }
-  render() {
-      return (
-          <View style={container.backgroud_1}>
-              <Button1 value="Sair" onPress={this.signOut}/>
-          </View>
-      )
-  }
-}
+import React from 'react';
+import Places from './main_tabs/Places'
+import Case from './main_tabs/Case'
+import Hints from './main_tabs/Hints'
+import Settings from './main_tabs/Settings'
+import { createBottomTabNavigator } from 'react-navigation';
+import BottonIcon from '../components/BottonIcon'
+
+const MainTabs = createBottomTabNavigator({
+  Places: {
+    screen: Places,
+    navigationOptions: {
+      tabBarIcon: ({ focused }) => <BottonIcon focused={focused} label="Locais" imageName='places'/>
+    }
+  },
+  Case: {
+    screen: Case,
+    navigationOptions: {
+      tabBarIcon: ({ focused }) => <BottonIcon focused={focused} label="Caso" imageName='case'/>
+    }
+  },
+  Hints: {
+    screen: Hints,
+    navigationOptions: {
+      tabBarIcon: ({ focused }) => <BottonIcon focused={focused} label="Suas pistas" imageName="hint"/>
+    }
+  },
+  Settings: {
+    screen: Settings,
+    navigationOptions: {
+      tabBarIcon: ({ focused }) => <BottonIcon focused={focused} label="Configurações" imageName="settings"/>
+    }
+  },
+},
+{
+  tabBarOptions: {
+      showIcon: true,
+      showLabel: false,
+      style: {
+        backgroundColor:'#774F38',
+        alignItems:'center',
+        height: 80,  
+      },
+  },
+  animationEnabled: true,
+})
+export default MainTabs;

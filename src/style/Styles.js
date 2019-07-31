@@ -89,7 +89,22 @@ export const container = StyleSheet.create({
         width:'90%',
         alignSelf:'center',
         height:15,
+    },
+    botton_icon:{
+        height:60,
+        width:85,
+        alignItems:'center',
+        justifyContent:'center',
+    },
+    botton_circle_icon:{
+        height:45,
+        width:45,
+        borderRadius:45/2.0,
+        backgroundColor: "#ECE5CE",
+        alignItems:'center',
+        justifyContent:'center',
     }
+    
 });
 export const text = StyleSheet.create({
     small_1:{
@@ -141,5 +156,25 @@ export const text = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         color: '#ECE5CE'
+    },
+    botton_icon_active:{
+        fontSize: 12,
+        textAlign:'center',
+        color: '#ECE5CE'
+    },
+    botton_icon_unactive:{
+        fontSize: 12,
+        textAlign:'center',
+        color: '#ECE5CE'
     }
 });
+export const image = StyleSheet.create({
+    botton_icon_active:{
+        height:25,
+        width: 25,
+    },
+    botton_icon_unactive:{
+        height:25,
+        width: 25,
+    }
+})
