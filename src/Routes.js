@@ -2,6 +2,7 @@ import { createStackNavigator, createAppContainer} from 'react-navigation';
 import InicialScreen from './screens/InicialScreen';
 import MainScreen from './screens/MainScreen';
 import LoadingScreen from './screens/LoadingScreen';
+import MainTabs from './screens/MainTabs';
 
 const AppNavigator = createStackNavigator({
     LoadingScreen:{
@@ -18,6 +19,12 @@ const AppNavigator = createStackNavigator({
     },
     MainScreen:{
         screen:MainScreen,
+        navigationOptions: ({ navigation }) => ({
+            header: null,
+        }),
+    },
+    MainTabs:{
+        screen:MainTabs,
         navigationOptions: ({ navigation }) => ({
             header: null,
         }),

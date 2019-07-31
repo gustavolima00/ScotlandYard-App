@@ -7,15 +7,11 @@ import {
 import {container, text } from '../style/Styles'
 
 export default class Input extends Component {
-    constructor(props) {
-        super(props);
-            this.state = {
-        };
-    }
     render(){
+        let placeholderColor=this.props.placeholderColor !=undefined ?this.props.placeholderColor:'#ECE5CE';
         return (
             <View>
-                <Text style={text.input_1}> { this.props.placeholder } </Text>
+                <Text style={[text.input_1, {color:placeholderColor}]}> { this.props.placeholder } </Text>
                 <View style={container.input_1}>
                     <TextInput
                         style = {text.normal_2}

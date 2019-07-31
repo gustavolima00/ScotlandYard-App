@@ -42,6 +42,15 @@ export const container = StyleSheet.create({
         borderRadius: 10,
         margin: 5,
     },
+    button_2:{
+        backgroundColor: "#774F38",
+        height: 50,
+        width: 150,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+        margin: 5,
+    },
     big_icon_1:{
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -94,7 +103,8 @@ export const text = StyleSheet.create({
     button_2:{
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#774F38'
+        textAlign:'center',
+        color: '#ECE5CE'
     },
     input_1:{
         fontSize: 20,
