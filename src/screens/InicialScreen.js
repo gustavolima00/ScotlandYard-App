@@ -115,8 +115,8 @@ export default class InicialScreen extends Component {
                     <Input placeholder={'Senha'} secureTextEntry={true} onChangeText={(password) => this.setState({password})}/>
                 </View>
                 <View style={{flexDirection:'row'}}> 
-                    <Button1 value="Criar Conta" onPress={this.signin}/>
-                    <Button1 value="Entrar" onPress={this.login}/>
+                    <Button1 value="Criar Conta" onPress={this.signin} />
+                    <Button1 value="Entrar" onPress={this.login} />
                 </View>
             </KeyboardAvoidingView>
         )
