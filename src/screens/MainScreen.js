@@ -1,21 +1,21 @@
-import React, { Component } from "react";
-import { 
-    View,
-} from "react-native";
-import Button1 from '../components/Button1'
-import {container, text} from '../style/Styles'
-import { onSignOut } from "../helpers/AuthMethods";
 
-export default class MainScreen extends Component {
-  signOut = async () => {
-    onSignOut()
-    this.props.navigation.navigate('InicialScreen')
-  }
-  render() {
-      return (
-          <View style={container.backgroud_1}>
-              <Button1 value="Sair" onPress={this.signOut}/>
-          </View>
-      )
-  }
-}
+import Home from './main_screens/Home'
+import CreateRoom from './main_screens/CreateRoom'
+import JoinRoom from './main_screens/JoinRoom'
+import { createStackNavigator, createAppContainer} from 'react-navigation';
+
+const MainScreen = createStackNavigator({
+  Home:{
+    screen:Home,
+    navigationOptions: ({ navigation }) => ({
+      header: null,
+    }),
+  },
+  CreateRoom:{
+      screen:CreateRoom,
+  },
+  JoinRoom:{
+      screen:JoinRoom,
+  },
+});
+export default MainScreen;

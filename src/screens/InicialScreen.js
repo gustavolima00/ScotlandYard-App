@@ -6,6 +6,7 @@ import { View, Animated, Keyboard, KeyboardAvoidingView, Image, Alert } from 're
 import { API_URL } from '../helpers/Requests'
 import { onSignIn } from "../helpers/AuthMethods";
 import axios from 'axios'
+import Spinner from 'react-native-loading-spinner-overlay';
 
 export default class InicialScreen extends Component {
     constructor(props) {
@@ -14,6 +15,7 @@ export default class InicialScreen extends Component {
         this.state = {
             email:'',
             password:'',
+            spinner: false,
         }
     }
     componentDidMount() {
@@ -23,6 +25,7 @@ export default class InicialScreen extends Component {
     componentWillUnmount() {
         this.keyboardDidShowSub.remove();
         this.keyboardDidHideSub.remove();
+        this.setState({ spinner: false });
     }
     keyboardDidShow = (event) => {
         Animated.timing(this.imageHeight, {
@@ -37,6 +40,7 @@ export default class InicialScreen extends Component {
         }).start();
     };
     login = async () => {
+        this.setState({ spinner: true });
         const login_path = `${API_URL}/auth/token_obtain/`;
         var self = this;
         axios.post(login_path ,{
@@ -44,6 +48,7 @@ export default class InicialScreen extends Component {
             'password': this.state.password,
         })
         .then (function (response) {
+            self.setState({ spinner: false });
             console.log('response.data', response.data)
             console.log('response.status', response.status)
             if(response.status>= 200 && response.status<300){
@@ -52,6 +57,7 @@ export default class InicialScreen extends Component {
             }
         })
         .catch(function (error) {
+            self.setState({ spinner: false });
             console.log('response.data', error.response.data)
             if(error.response.data.username!=undefined) 
                 Alert.alert('Erro no campo de Email', error.response.data.username[0])
@@ -62,6 +68,7 @@ export default class InicialScreen extends Component {
         })
     }
     signin = async () => {
+        this.setState({ spinner: true });
         const login_path = `${API_URL}/auth/registration/`;
         var self = this;
         axios.post(login_path ,{
@@ -71,6 +78,7 @@ export default class InicialScreen extends Component {
             'password2': this.state.password,
         })
         .then (function (response) {
+            self.setState({ spinner: false });
             console.log('response.data', response.data)
             console.log('response.status', response.status)
             if(response.status>= 200 && response.status<300){
@@ -79,6 +87,7 @@ export default class InicialScreen extends Component {
             }
         })
         .catch(function (error) {
+            self.setState({ spinner: false });
             console.log('response.data', error.response.data)
             if(error.response.data.password1!=undefined) 
                 Alert.alert('Erro no campo da Senha', error.response.data.password1[0])
@@ -90,7 +99,13 @@ export default class InicialScreen extends Component {
     }
     render() {
         return (
-            <KeyboardAvoidingView style={container.backgroud_1}>           
+            <KeyboardAvoidingView style={container.backgroud_1}>
+                <Spinner
+                    color="#ECE5CE"
+                    visible={this.state.spinner}
+                    textContent={'Carregando...'}
+                    textStyle={text.normal_1}
+                />           
                 <Animated.Image
                     style={{width: this.imageHeight, height:this.imageHeight}}
                     source={require('../img/detective.png')}
