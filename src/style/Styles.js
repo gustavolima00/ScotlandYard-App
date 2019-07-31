@@ -21,9 +21,13 @@ export const container = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
-    status_bar:{
+    header:{
         backgroundColor: "#774F38",
-        height: Constants.statusBarHeight,
+        height: 60,
+        width:'100%',
+        justifyContent:'center',
+        alignItems:'center',
+        alignSelf:'flex-end',
     },
     input_1: {
         backgroundColor: "#FFFFFF",
@@ -132,7 +136,13 @@ export const text = StyleSheet.create({
     big_2:{
         fontSize: 38,
         fontWeight: 'bold',
-        color: '#774F38'
+        color: '#774F38',
+        textAlign:'center',
+    },
+    header: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#ECE5CE'
     },
     button_1:{
         fontSize: 20,
