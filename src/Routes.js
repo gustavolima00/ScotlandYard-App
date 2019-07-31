@@ -1,19 +1,12 @@
 import { createStackNavigator, createAppContainer} from 'react-navigation';
-import Login from './screens/Login';
-import Register from './screens/Register';
+import InicialScreen from './screens/InicialScreen';
 import MainScreen from './screens/MainScreen';
 
 const AppNavigator = createStackNavigator({
-    Login:{
-        screen:Login,
+    InicialScreen:{
+        screen:InicialScreen,
         navigationOptions: ({ navigation }) => ({
             header: null,
-        }),
-    },
-    Register:{
-        screen:Register,
-        navigationOptions: ({ navigation }) => ({
-            header: null,        
         }),
     },
     MainScreen:{

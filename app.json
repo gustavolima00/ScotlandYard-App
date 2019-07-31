@@ -4,6 +4,11 @@
     "slug": "scotland",
     "privacy": "public",
     "sdkVersion": "33.0.0",
+    "androidStatusBarColor": "#774F38",
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#774F38"
+    },
     "platforms": [
       "ios",
       "android",

@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { Constants } from 'expo';
 
 export const container = StyleSheet.create({
     backgroud_1:{
@@ -9,7 +10,6 @@ export const container = StyleSheet.create({
       width: '100%',
       height: '100%',
     },
-
     backgroud_2:{
         backgroundColor: "#ECE5CE",
         flexDirection: 'column',
@@ -17,44 +17,84 @@ export const container = StyleSheet.create({
         alignItems: 'center',
         width: '100%',
         height: '100%',
-      },
+    },
+    status_bar:{
+        backgroundColor: "#774F38",
+        height: Constants.statusBarHeight,
+    },
+    input_1: {
+        backgroundColor: "#FFFFFF",
+        height: 50,
+        width: 300,
+        borderRadius: 10,
+        padding: 5,
+        justifyContent: 'center',
+    },
+    button_1:{
+        backgroundColor: "#ECE5CE",
+        height: 50,
+        width: 150,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+        margin: 5,
+    },
+    big_icon_1:{
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    big_icon_circle:{
+        backgroundColor: "#ECE5CE",
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        width: 150,
+        height: 150,
+        borderRadius: 150/2.0,
+    },
 });
 export const text = StyleSheet.create({
-    text_1_small:{
+    small_1:{
       fontSize: 12,
       color: '#ECE5CE'
     },
-    text_1_normal:{
+    normal_1:{
         fontSize: 18,
         color: '#ECE5CE'
     },
-    text_1_big:{
+    big_1:{
         fontSize: 38,
         fontWeight: 'bold',
         color: '#ECE5CE'
     },
 
-    text_2_small:{
+    small_2:{
         fontSize: 12,
         color: '#774F38'
     },
-    text_2_normal:{
+    normal_2:{
         fontSize: 18,
         color: '#774F38'
     },
-    text_2_big:{
+    big_2:{
         fontSize: 38,
         fontWeight: 'bold',
         color: '#774F38'
     },
-    text_button_1:{
+    button_1:{
         fontSize: 20,
         fontWeight: 'bold',
         color: '#774F38'
-    }
-    text_button_2:{
+    },
+    button_2:{
         fontSize: 20,
         fontWeight: 'bold',
         color: '#774F38'
+    },
+    input_1:{
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#ECE5CE'
     }
 });
