@@ -10,14 +10,15 @@ export default class HomeIcon extends Component {
     constructor(props) {
         super(props);
             this.state = {
-        };
+                imageHeight:150,
+            };
     }
     render(){
         return (
             <View style={container.big_icon_1}>
                 <View style={container.big_icon_circle}>
                     <Image
-                        style={{width: 100, height: 100}}
+                        style={{width: 150, height:150}}
                         source={require('../img/detective.png')}
                     />
                 </View>

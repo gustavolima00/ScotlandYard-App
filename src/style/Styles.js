@@ -1,5 +1,8 @@
 import { StyleSheet } from "react-native";
-import { Constants } from 'expo';
+import Constants from 'expo-constants'
+
+export const IMAGE_HEIGHT = 250
+export const IMAGE_HEIGHT_SMALL = 100
 
 export const container = StyleSheet.create({
     backgroud_1:{
