@@ -15,7 +15,7 @@ export default class Input extends Component {
                 <View style={container.input_1}>
                     <TextInput
                         style = {text.normal_2}
-                        onChangeText={this.props.onChangeText}
+                        onSubmitEditing={this.props.onChangeText}
                         value={this.props.value}
                         secureTextEntry={this.props.secureTextEntry}
                     />

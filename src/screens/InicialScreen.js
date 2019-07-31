@@ -58,12 +58,13 @@ export default class InicialScreen extends Component {
         })
         .catch(function (error) {
             self.setState({ spinner: false });
-            console.log('response.data', error.response.data)
-            if(error.response.data.username!=undefined) 
+            if(error.response===undefined)
+                Alert.alert('Erro', 'Erro na conexão com o servidor')
+            else if(error.response.data.username!==undefined) 
                 Alert.alert('Erro no campo de Email', error.response.data.username[0])
-            if(error.response.data.password!=undefined) 
+            else if(error.response.data.password!==undefined) 
                 Alert.alert('Erro no campo da Senha', error.response.data.password[0])
-            if (error.response.data.non_field_errors != undefined)
+            else if(error.response.data.non_field_errors !== undefined)
                 Alert.alert('Erro', error.response.data.non_field_errors[0])
         })
     }
@@ -88,12 +89,13 @@ export default class InicialScreen extends Component {
         })
         .catch(function (error) {
             self.setState({ spinner: false });
-            console.log('response.data', error.response.data)
-            if(error.response.data.password1!=undefined) 
+            if(error.response===undefined)
+                Alert.alert('Erro', 'Erro na conexão com o servidor')
+            else if(error.response.data.password1!=undefined) 
                 Alert.alert('Erro no campo da Senha', error.response.data.password1[0])
-            if(error.response.data.email!=undefined) 
+            else if(error.response.data.email!=undefined) 
                 Alert.alert('Erro no campo de Email', error.response.data.email[0])
-            if (error.response.data.non_field_errors != undefined)
+            else if(error.response.data.non_field_errors != undefined)
                 Alert.alert('Erro', error.response.data.non_field_errors[0])
         })
     }

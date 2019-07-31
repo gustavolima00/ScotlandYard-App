@@ -10,7 +10,6 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import { API_URL } from '../../helpers/Requests'
 import axios from 'axios'
 import { getUserToken } from '../../helpers/AuthMethods'
-import { NavigationActions } from 'react-navigation';
 
 export default class JoinRoom extends Component {
     constructor(props){
@@ -49,8 +48,9 @@ export default class JoinRoom extends Component {
         })
         .catch(function (error) {
             self.setState({ spinner: false });
-            console.log('response.data', error.response.data)
-            if(error.response.data.error!==undefined)
+            if(error.response===undefined)
+                Alert.alert('Erro', 'Erro na conexão com o servidor')
+            else if(error.response.data.error!==undefined)
                 Alert.alert('Erro', error.response.data.error)
             
 

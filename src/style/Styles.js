@@ -51,6 +51,15 @@ export const container = StyleSheet.create({
         borderRadius: 10,
         margin: 5,
     },
+    touch_card:{
+        backgroundColor: "#E08E79",
+        height: 60,
+        width: 150,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+        margin: 5,
+    },
     big_icon_1:{
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -65,6 +74,22 @@ export const container = StyleSheet.create({
         height: 150,
         borderRadius: 150/2.0,
     },
+    line_1:{
+        marginBottom:15, 
+        borderBottomColor: '#ECE5CE', 
+        borderBottomWidth: 1,
+        width:'90%',
+        alignSelf:'center',
+        height:15,
+    },
+    line_2:{
+        marginBottom:15, 
+        borderBottomColor: '#774F38', 
+        borderBottomWidth: 1,
+        width:'90%',
+        alignSelf:'center',
+        height:15,
+    }
 });
 export const text = StyleSheet.create({
     small_1:{
@@ -101,6 +126,12 @@ export const text = StyleSheet.create({
         color: '#774F38'
     },
     button_2:{
+        fontSize: 20,
+        fontWeight: 'bold',
+        textAlign:'center',
+        color: '#ECE5CE'
+    },
+    touch_card:{
         fontSize: 20,
         fontWeight: 'bold',
         textAlign:'center',

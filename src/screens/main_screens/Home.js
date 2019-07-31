@@ -3,6 +3,7 @@ import {
     View,
     Image,
     KeyboardAvoidingView,
+    Alert,
 } from "react-native";
 import Button1 from '../../components/Button1'
 import Input from '../../components/Input'
@@ -42,13 +43,15 @@ export default class Home extends Component {
       console.log('response.data', response.data)
       console.log('response.status', response.status)
       if(response.status>= 200 && response.status<300){
+        if(self.state.name!==undefined)
+          Alert.alert('Sucesso', `Seu nome foi alterado para ${self.state.name}`)
         self.setState({ name: response.data.name });
       }
     })
     .catch(function (error) {
       self.setState({ spinner: false });
-      console.log('response.data', error.response.data)
-      Alert.alert('Error')
+      if(error.response===undefined)
+        Alert.alert('Erro', 'Erro na conexão com o servidor')
     })
   }
   componentDidMount(){
