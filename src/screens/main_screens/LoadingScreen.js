@@ -38,7 +38,7 @@ export default class LoadingScreen extends Component {
       console.log('response.data', response.data)
       console.log('response.status', response.status)
       if(response.status>= 200 && response.status<300){
-        if(self.state.sala_id===""){
+        if(response.data.sala_id==''){
           self.props.navigation.navigate('Home');
         }
         else{

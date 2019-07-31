@@ -58,8 +58,9 @@ export default class Home extends Component {
     this.loadScreen();
   }
   signOut = async () => {
-    onSignOut()
-    this.props.navigation.navigate('InicialScreen')
+    onSignOut();
+    Alert.alert('Sucesso', 'Logout realizado com sucesso');
+    this.props.navigation.navigate('InicialScreen');
   }
   create_room = async () =>{
     this.props.navigation.navigate('CreateRoom')

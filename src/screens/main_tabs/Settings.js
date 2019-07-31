@@ -7,7 +7,7 @@ import {
 import Button2 from '../../components/Button2'
 import Input from '../../components/Input'
 import { container, text } from '../../style/Styles'
-import { getUserToken } from "../../helpers/AuthMethods";
+import { getUserToken, onSignOut } from "../../helpers/AuthMethods";
 import { API_URL } from '../../helpers/Requests'
 import axios from 'axios'
 import Spinner from 'react-native-loading-spinner-overlay';
@@ -84,6 +84,11 @@ export default class Settings extends Component {
       }
     })
   }
+  log_out = async () => {
+    onSignOut();
+    Alert.alert('Sucesso', 'Logout realizado com sucesso')
+    this.props.navigation.navigate('InicialScreen')
+  }
   render() {
       return (
         <View style={[ container.backgroud_2, { justifyContent:'space-between' }]}>
@@ -113,6 +118,7 @@ export default class Settings extends Component {
             />
             <Button2 
               value="Log out" 
+              onPress={this.log_out}
               height={40} 
               width={170} 
               fontSize={18}
