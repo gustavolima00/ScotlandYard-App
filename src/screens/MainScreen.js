@@ -1,31 +1,21 @@
 import React, { Component } from "react";
 import { 
-    View, 
-    Text,
-    StyleSheet,
+    View,
 } from "react-native";
+import Button1 from '../components/Button1'
+import {container, text} from '../style/Styles'
+import { onSignOut } from "../helpers/AuthMethods";
 
 export default class MainScreen extends Component {
-    render() {
-        return (
-            <View style={styles.container}>
-                <Text style={styles.text_out}> MainScreen </Text>
-            </View>
-        )
-    }
-
+  signOut = async () => {
+    onSignOut()
+    this.props.navigation.navigate('InicialScreen')
+  }
+  render() {
+      return (
+          <View style={container.backgroud_1}>
+              <Button1 value="Sair" onPress={this.signOut}/>
+          </View>
+      )
+  }
 }
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#ECE5CE",
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
-  },
-  text_out:{
-    fontSize: 18,
-    color: '#774F38'
-  },
-});
