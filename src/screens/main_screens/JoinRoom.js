@@ -8,8 +8,8 @@ import {container, text} from '../../style/Styles'
 export default class JoinRoom extends Component {
   render() {
       return (
-          <View style={container.backgroud_1}>
-              <Text style={text.normal_1}> JoinRoom </Text>
+          <View style={container.backgroud_2}>
+              <Text style={text.normal_2}> JoinRoom </Text>
           </View>
       )
   }

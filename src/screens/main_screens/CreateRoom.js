@@ -8,8 +8,8 @@ import {container, text} from '../../style/Styles'
 export default class CreateRoom extends Component {
   render() {
       return (
-          <View style={container.backgroud_1}>
-              <Text style={text.normal_1}> CreateRoom </Text>
+          <View style={container.backgroud_2}>
+              <Text style={text.normal_2}> CreateRoom </Text>
           </View>
       )
   }

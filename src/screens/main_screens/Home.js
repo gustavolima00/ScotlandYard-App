@@ -81,6 +81,7 @@ export default class Home extends Component {
               <Input
                 placeholder="Nome"
                 value={this.state.name}
+                onChangeText={(name) => this.setState({name})}
               />
               <Button1 value="Alterar Nome" height={45} width={150} fontSize={18} onPress={this.update_user}/>
             </View>
