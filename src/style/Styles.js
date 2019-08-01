@@ -111,6 +111,16 @@ export const container = StyleSheet.create({
     
 });
 export const text = StyleSheet.create({
+    case_title:{
+        fontSize: 20,
+        textAlign:'center',
+        fontWeight: 'bold',
+        color: '#774F38'
+    },
+    case_text:{
+        fontSize: 14,
+        color: '#774F38'
+    },
     small_1:{
       fontSize: 12,
       color: '#ECE5CE'
