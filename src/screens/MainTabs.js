@@ -3,7 +3,7 @@ import React from 'react';
 import Places from './main_tabs/Places'
 import Case from './main_tabs/Case'
 import Hints from './main_tabs/Hints'
-import Settings from './main_tabs/Settings'
+import Room from './main_tabs/Room'
 import { createBottomTabNavigator } from 'react-navigation';
 import BottonIcon from '../components/BottonIcon'
 
@@ -26,10 +26,10 @@ const MainTabs = createBottomTabNavigator({
       tabBarIcon: ({ focused }) => <BottonIcon focused={focused} label="Suas pistas" imageName="hint"/>
     }
   },
-  Settings: {
-    screen: Settings,
+  Room: {
+    screen: Room,
     navigationOptions: {
-      tabBarIcon: ({ focused }) => <BottonIcon focused={focused} label="Configurações" imageName="settings"/>
+      tabBarIcon: ({ focused }) => <BottonIcon focused={focused} label="Sua Sala" imageName="room"/>
     }
   },
 },

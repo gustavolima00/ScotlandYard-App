@@ -42,7 +42,6 @@ export default class JoinRoom extends Component {
             console.log('response.data', response.data)
             console.log('response.status', response.status)
             if(response.status>= 200 && response.status<300){
-                Alert.alert(`Código da sala: ${response.data.id}`, 'O código também pode ser encontrado na aba configurações')
                 self.props.navigation.navigate('MainTabs')
             }
         })

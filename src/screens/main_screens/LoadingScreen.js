@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { 
     View, 
     ActivityIndicator,
+    Alert,
 } from "react-native";
 import { getUserToken } from "../../helpers/AuthMethods";
 import { container } from '../../style/Styles'
 import { API_URL } from '../../helpers/Requests'
 import axios from 'axios'
+import {NavigationEvents} from 'react-navigation';
 
 export default class LoadingScreen extends Component {
   constructor(props){
@@ -15,9 +17,6 @@ export default class LoadingScreen extends Component {
       token: undefined,
       room_id: undefined,
     }
-  }
-  componentDidMount() {
-    this.loadScreen();
   }
   loadScreen = async () => {
     await getUserToken()
@@ -47,6 +46,7 @@ export default class LoadingScreen extends Component {
       }
     })
     .catch(function (error) {
+      console.log(error)
       self.setState({ spinner: false });
       if(error.response===undefined){
         Alert.alert('Erro', 'Erro na conexão com o servidor')
@@ -57,6 +57,7 @@ export default class LoadingScreen extends Component {
   render() {
       return (
           <View style={container.backgroud_1}>
+            <NavigationEvents onDidFocus={ this.loadScreen } />
               <ActivityIndicator size="large" color="#ECE5CE"/>
           </View>
       )

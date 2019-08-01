@@ -13,6 +13,7 @@ import { getUserToken } from '../../helpers/AuthMethods'
 import Spinner from 'react-native-loading-spinner-overlay';
 import { API_URL } from '../../helpers/Requests'
 import axios from 'axios'
+import {NavigationEvents} from 'react-navigation';
 
 export default class Home extends Component {
   constructor(props){
@@ -54,9 +55,6 @@ export default class Home extends Component {
         Alert.alert('Erro', 'Erro na conexão com o servidor')
     })
   }
-  componentDidMount(){
-    this.loadScreen();
-  }
   signOut = async () => {
     onSignOut();
     Alert.alert('Sucesso', 'Logout realizado com sucesso');
@@ -71,6 +69,7 @@ export default class Home extends Component {
   render() {
       return (
           <KeyboardAvoidingView style={container.backgroud_1}>
+            <NavigationEvents onDidFocus={ () => { this.setState({ name: undefined }); this.loadScreen();} } />
             <Spinner
                 color="#ECE5CE"
                 visible={this.state.spinner}

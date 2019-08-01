@@ -23,6 +23,10 @@ export default class BottonIcon extends Component {
             img_active = require(`../img/settings_active.png`)
             img_unactive = require(`../img/settings_unactive.png`)
         }
+        else if(img_name==='room'){
+            img_active = require(`../img/room_active.png`)
+            img_unactive = require(`../img/room_unactive.png`)
+        }
         else{
             img_active = require(`../img/hint_active.png`)
             img_unactive = require(`../img/hint_unactive.png`)

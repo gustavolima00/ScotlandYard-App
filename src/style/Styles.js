@@ -87,10 +87,10 @@ export const container = StyleSheet.create({
         height:15,
     },
     line_2:{
-        marginBottom:15, 
+        marginBottom:15,
         borderBottomColor: '#774F38', 
-        borderBottomWidth: 1,
-        width:'90%',
+        borderBottomWidth: 2,
+        width:300,
         alignSelf:'center',
         height:15,
     },

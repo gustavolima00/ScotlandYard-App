@@ -65,7 +65,7 @@ export default class CreateRoom extends Component {
             console.log('response.data', response.data)
             console.log('response.status', response.status)
             if(response.status>= 200 && response.status<300){
-                Alert.alert(`Código da sala: ${response.data.id}`, 'O código também pode ser encontrado na aba configurações')
+                Alert.alert(`Código da sala: ${response.data.id}`, 'O código também pode ser encontrado na aba Sua sala')
                 self.props.navigation.navigate('MainTabs')
             }
         })
@@ -106,7 +106,6 @@ export default class CreateRoom extends Component {
                         keyExtractor={(item) => item.id}
                     />
                 </ScrollView>
-                <View style={container.line_2}/>
             </View>
         )
     }
