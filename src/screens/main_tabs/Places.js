@@ -13,7 +13,7 @@ const Places = createStackNavigator({
     PlaceDetails: {
         screen: PlaceDetails,
         navigationOptions: ({ navigation }) => ({
-            title:'Criar sala',
+            title:`Pista - ${navigation.getParam('place_name', '')}`,
             headerStyle: {
               backgroundColor:'#774F38',
             },

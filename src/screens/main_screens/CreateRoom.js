@@ -7,7 +7,6 @@ import {
     RefreshControl,
 } from "react-native";
 import Input from '../../components/Input'
-import Button2 from '../../components/Button2'
 import TouchCard from '../../components/TouchCard'
 import {container, text} from '../../style/Styles'
 import Spinner from 'react-native-loading-spinner-overlay';

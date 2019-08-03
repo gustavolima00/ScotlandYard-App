@@ -13,12 +13,18 @@ import { API_URL } from '../../helpers/Requests'
 import PlayerCard from '../../components/PlayerCard'
 import axios from 'axios'
 
+Number.prototype.pad = function(size) {
+    var s = String(this);
+    while (s.length < (size || 2)) {s = "0" + s;}
+    return s;
+  }
+  
 export default class Log extends Component {
     constructor(props) {
         super(props);
         this.state = {
             token: undefined,
-            log:[ { time:"15:50", action:"Fulano abriu a pista do Banco" }, { time:"15:42", action:"Pedro entrou na sala" } ],
+            log:[],
             refreshing:true,
         }
     }
@@ -31,7 +37,7 @@ export default class Log extends Component {
     }
     get_log = async () =>{
         this.setState({ refreshing: true });
-        const get_log_path = `${API_URL}/room/get_case/`;
+        const get_log_path = `${API_URL}/room/get_log/`;
         var self = this;
         axios.post(get_log_path ,{
             'token': this.state.token,
@@ -41,6 +47,9 @@ export default class Log extends Component {
             console.log('response.data', response.data)
             console.log('response.status', response.status)
             if(response.status>= 200 && response.status<300){
+                var date_test = new Date(response.data[0].time);
+                console.log(date_test.getHours());
+                self.setState({log:response.data});
             }
         })
         .catch(function (error) {
@@ -52,6 +61,11 @@ export default class Log extends Component {
                 Alert.alert('Erro', error.response.data.error)
             }
         })
+    }
+    get_date(date_string){
+        var date = new Date(date_string);
+        var ans =  `${date.getHours().pad()}:${date.getMinutes().pad()}`
+        return ans
     }
     render() {
         return (
@@ -71,7 +85,7 @@ export default class Log extends Component {
                 >
                     <FlatList 
                         data={this.state.log}
-                        renderItem={({item}) => <PlayerCard name={item.time} email={item.action} /> }
+                        renderItem={({item}) => <PlayerCard name={item.text} email={this.get_date(item.time)} /> }
                         keyExtractor={(item) => item.time}
                     />
                 </ScrollView>

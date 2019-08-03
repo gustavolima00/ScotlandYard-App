@@ -56,7 +56,7 @@ export const container = StyleSheet.create({
         margin: 5,
     },
     touch_card:{
-        backgroundColor: "#E08E79",
+        backgroundColor: "#774F38",
         height: 60,
         width: 150,
         justifyContent: 'center',

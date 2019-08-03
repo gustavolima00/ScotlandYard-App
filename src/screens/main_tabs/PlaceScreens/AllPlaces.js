@@ -40,7 +40,7 @@ export default class AllPlaces extends Component {
                     renderItem={({item}) => 
                         <Button2 
                             value={ item.title } 
-                            onPress={() => this.props.navigation.navigate('PlaceDetails', { place_code:item.code })}
+                            onPress={() => this.props.navigation.navigate('PlaceDetails', { place_code:item.code, place_name:item.title })}
                             width={300}
                         /> }
                     keyExtractor={(item) => item.code}
