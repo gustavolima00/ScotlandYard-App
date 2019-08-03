@@ -1,16 +1,31 @@
-import React, { Component } from "react";
-import { 
-    View,
-    Text,
-} from "react-native";
-import {container, text} from '../../style/Styles'
+import { createStackNavigator } from 'react-navigation';
+import AllPlaces from './PlaceScreens/AllPlaces'
+import PlaceDetails from './PlaceScreens/PlaceDetails'
+import { Dimensions } from 'react-native'
 
-export default class Places extends Component {
-  render() {
-      return (
-          <View style={container.backgroud_2}>
-              <Text style={text.normal_2}> Places </Text>
-          </View>
-      )
-  }
-}
+const Places = createStackNavigator({ 
+    AllPlaces: {
+        screen: AllPlaces,
+        navigationOptions: ({ navigation }) => ({
+            header: null,
+        }),
+    },
+    PlaceDetails: {
+        screen: PlaceDetails,
+        navigationOptions: ({ navigation }) => ({
+            title:'Criar sala',
+            headerStyle: {
+              backgroundColor:'#774F38',
+            },
+            headerTitleStyle: {
+              color: '#ECE5CE',
+              fontSize: 22,
+              textAlign: 'center',
+              width: Dimensions.get('window').width - 130
+            },
+            headerLayoutPreset: 'center',
+            headerTintColor:'#ECE5CE',
+        }),
+    },
+})
+export default Places;
