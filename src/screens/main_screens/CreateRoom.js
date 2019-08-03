@@ -6,6 +6,7 @@ import {
     ScrollView,
     RefreshControl,
 } from "react-native";
+import { NavigationEvents } from 'react-navigation';
 import Input from '../../components/Input'
 import TouchCard from '../../components/TouchCard'
 import {container, text} from '../../style/Styles'
@@ -48,9 +49,6 @@ export default class CreateRoom extends Component {
             console.log(error)
         })
     }
-    componentDidMount(){
-        this.loadScreen();
-    }
     createRoom = async ( case_id ) => {
         this.setState({ spinner: true });
         const create_path = `${API_URL}/room/create/`;
@@ -85,6 +83,7 @@ export default class CreateRoom extends Component {
                     textContent={'Carregando...'}
                     textStyle={text.normal_1}
                 />
+                <NavigationEvents onDidFocus={ this.loadScreen } />
                 <Input 
                     placeholder= "Procurar caso"
                     placeholderColor="#774F38" 
@@ -102,7 +101,7 @@ export default class CreateRoom extends Component {
                     <FlatList 
                         data={this.state.cases}
                         renderItem={({item}) => <TouchCard value={item.titulo} onPress={ () => { this.createRoom(item.id) }}/> }
-                        keyExtractor={(item) => item.id}
+                        keyExtractor={(item) => String(item.id)}
                     />
                 </ScrollView>
             </View>

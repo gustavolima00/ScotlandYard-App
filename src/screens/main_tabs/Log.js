@@ -5,6 +5,7 @@ import {
     ScrollView,
     RefreshControl,
     FlatList,
+    Alert,
 } from "react-native";
 import {container, text} from '../../style/Styles'
 import {NavigationEvents} from 'react-navigation';
