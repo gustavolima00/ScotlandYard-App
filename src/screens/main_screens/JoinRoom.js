@@ -46,6 +46,7 @@ export default class JoinRoom extends Component {
             }
         })
         .catch(function (error) {
+            console.log('error',error)
             self.setState({ spinner: false });
             if(error.response===undefined)
                 Alert.alert('Erro', 'Erro na conexão com o servidor')

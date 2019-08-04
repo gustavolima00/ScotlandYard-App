@@ -32,8 +32,12 @@ export default class PlaceDetails extends Component {
         await getUserToken()
         .then(res => {
             this.setState({ token: res });
-            this.setState({place_code: this.props.navigation.getParam('place_code', undefined)});
-            this.setState({place_name: this.props.navigation.getParam('place_name', undefined)});
+            var place_code = this.props.navigation.getParam('place_code', undefined);
+            console.log('place_code', place_code)
+            var place_name = this.props.navigation.getParam('place_name', undefined);
+            console.log('place_name', place_name);
+            this.setState({place_code});
+            this.setState({place_name});
             this.get_case();
             this.update_user();
         })
@@ -65,6 +69,7 @@ export default class PlaceDetails extends Component {
             }
         })
         .catch(function (error) {
+            console.log('error', error)
             self.setState({ spinner: false });
             if(error.response===undefined){
                 Alert.alert('Erro', 'Erro na conexão com o servidor')
@@ -92,6 +97,7 @@ export default class PlaceDetails extends Component {
             }
         })
         .catch(function (error) {
+            console.log('error', error)
             self.setState({ spinner: false });
             console.log(error)
             if(error.response===undefined)
@@ -106,10 +112,8 @@ export default class PlaceDetails extends Component {
                 [
                     { text: 'Cancelar', style: 'cancel' },
                     { text: 'Sim', onPress: this.requestChange }
-
                 ],
-
-                );
+            );
         }
         else{
             this.requestChange();
@@ -121,8 +125,9 @@ export default class PlaceDetails extends Component {
         var self = this;
         var obj = {}
         obj['token'] = this.state.token
+        obj[`pista_${self.state.place_code}`] = !this.state.unlocked;
         this.setState({unlocked:!this.state.unlocked});
-        obj[`pista_${self.state.place_code}`] = this.state.unlocked;
+        console.log(obj)
         axios.post(update_path , obj)
         .then (function (response) {
             self.setState({ spinner: false });
@@ -142,7 +147,7 @@ export default class PlaceDetails extends Component {
     render() {
         return (
             <View style={[ container.backgroud_2, { justifyContent:'space-between' }]}>
-                <NavigationEvents onDidFocus={ this.loadScreen } />
+                <NavigationEvents onDidFocus={ () => { this.setState({spinner:true}); this.loadScreen();} } />
                 <Spinner
                     color="#ECE5CE"
                     visible={this.state.spinner}

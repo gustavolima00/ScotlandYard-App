@@ -51,6 +51,7 @@ export default class Room extends Component {
       }
     })
     .catch(function (error) {
+      console.log('error', error)
       self.setState({ spinner: false });
       if(error.response===undefined){
         Alert.alert('Erro', 'Erro na conexão com o servidor')
@@ -73,6 +74,7 @@ export default class Room extends Component {
       }
     })
     .catch(function (error) {
+      console.log('error', error)
       self.setState({ refreshing: false });
       if(error.response===undefined){
         Alert.alert('Erro', 'Erro na conexão com o servidor')
@@ -99,6 +101,7 @@ export default class Room extends Component {
       }
     })
     .catch(function (error) {
+      console.log('error', error)
       self.setState({ spinner: false });
       if(error.response===undefined){
         Alert.alert('Erro', 'Erro na conexão com o servidor')

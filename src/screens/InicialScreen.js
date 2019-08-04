@@ -58,6 +58,7 @@ export default class InicialScreen extends Component {
         })
         .catch(function (error) {
             self.setState({ spinner: false });
+            console.log(error)
             if(error.response===undefined)
                 Alert.alert('Erro', 'Erro na conexão com o servidor')
             else if(error.response.data.username!==undefined) 
@@ -89,6 +90,7 @@ export default class InicialScreen extends Component {
         })
         .catch(function (error) {
             self.setState({ spinner: false });
+            console.log(error)
             if(error.response===undefined)
                 Alert.alert('Erro', 'Erro na conexão com o servidor')
             else if(error.response.data.password1!=undefined) 
@@ -101,7 +103,7 @@ export default class InicialScreen extends Component {
     }
     render() {
         return (
-            <KeyboardAvoidingView style={container.backgroud_1}>
+            <KeyboardAvoidingView style={[container.backgroud_1, {flex:1}]}>
                 <Spinner
                     color="#ECE5CE"
                     visible={this.state.spinner}

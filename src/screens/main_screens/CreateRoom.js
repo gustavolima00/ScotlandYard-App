@@ -20,7 +20,7 @@ export default class CreateRoom extends Component {
         super(props);
         this.state ={
             token: undefined,
-            spinner:false,
+            spinner:true,
             cases:[],
             refreshing: false,
             search_text: ''
@@ -28,9 +28,24 @@ export default class CreateRoom extends Component {
     }
     loadScreen = async () => {
         await getUserToken()
-        .then(res => {
+        .then(res => {  
             this.setState({ token: res });
-            this.searchCases();
+            this.getCases();
+        })
+    }
+    getCases = async () => {
+        const search_path = `${API_URL}/case/`;
+        var self = this;
+        axios.get(search_path)
+        .then (function (response) {
+            self.setState({spinner: false});
+            console.log('response.data', response.data)
+            console.log('response.status', response.status)
+            self.setState({ cases: response.data });
+        })
+        .catch(function (error) {
+            self.setState({spinner: false});
+            console.log(error)
         })
     }
     searchCases = async () => {
@@ -68,6 +83,7 @@ export default class CreateRoom extends Component {
         })
         .catch(function (error) {
             self.setState({ spinner: false });
+            console.log('error', error);
             if(error.response===undefined)
                 Alert.alert('Erro', 'Erro na conexão com o servidor')
             else if(error.response.data.error!==undefined)

@@ -54,6 +54,7 @@ export default class Log extends Component {
             }
         })
         .catch(function (error) {
+            console.log('error', error)
             self.setState({ refreshing: false });
             if(error.response===undefined){
                 Alert.alert('Erro', 'Erro na conexão com o servidor')
