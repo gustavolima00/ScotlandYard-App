@@ -1,2 +1,14 @@
-# Scotland_Yard_game
-Um jogo baseado no Scotland Yard de tabuleiro voltado para mobile
+![](icon.png)
+# ScotlandYard App
+
+## O que é o ScotlandYard
+ScotlandYard é um jogo de tabuleiro jogado com o auxílio do app.
+
+## Como rodar
+
+Para rodar o servidor localmente é necessário ter os **yarn**, **npm** e**expo-cli** instalados. Logo após é só rodar os comandos:
+```shell
+$ yarn
+$ yarn start
+```
+E Seguir as instruções para rodar localmente ultilizando o **Expo**
