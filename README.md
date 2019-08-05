@@ -1,4 +1,7 @@
-![](icon.png)
+<p align="center">
+<img src="icon.png" width="400"/>
+</p>
+
 # ScotlandYard App
 
 ## O que é o ScotlandYard
