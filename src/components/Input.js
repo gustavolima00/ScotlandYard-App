@@ -14,14 +14,11 @@ export default class Input extends Component {
         
         return (
             <View>
-                <Text style={[text.input_1, {color:placeholderColor}]}> { this.props.placeholder } </Text>
+                <Text style={[text.input_1, {color:placeholderColor}]}> { this.props.title } </Text>
                 <View style={[container.input_1, {height:_height, width:_width}]}>
                     <TextInput
                         {...this.props}
                         style = {text.normal_2}
-                        onChangeText={this.props.onChangeText}
-                        value={this.props.value}
-                        secureTextEntry={this.props.secureTextEntry}
                     />
                 </View>
             </View>

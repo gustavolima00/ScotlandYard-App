@@ -82,7 +82,7 @@ export default class Home extends Component {
             />
             <View style={{ alignItems:'flex-end' }}>
               <Input
-                placeholder="Nome"
+                title="Nome"
                 value={this.state.name}
                 onChangeText={(name) => this.setState({name})}
               />

@@ -66,7 +66,7 @@ export default class JoinRoom extends Component {
                     textStyle={text.normal_1}
                 /> 
                 <Input 
-                    placeholder="Código" 
+                    title="Código" 
                     placeholderColor="#774F38" 
                     onChangeText={(room_id) => this.setState({room_id})}
                 />

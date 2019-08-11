@@ -115,8 +115,8 @@ export default class InicialScreen extends Component {
                     source={require('../img/detective.png')}
                 />
                 <View>
-                    <Input placeholder={'Email'} onChangeText={(email) => this.setState({email})}/>
-                    <Input placeholder={'Senha'} secureTextEntry={true} onChangeText={(password) => this.setState({password})}/>
+                    <Input title={'Email'} onChangeText={(email) => this.setState({email})}/>
+                    <Input title={'Senha'} secureTextEntry={true} onChangeText={(password) => this.setState({password})}/>
                 </View>
                 <View style={{flexDirection:'row'}}> 
                     <Button1 value="Criar Conta" onPress={this.signin} />

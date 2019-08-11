@@ -113,13 +113,6 @@ export default class Case extends Component {
             <ScrollView style={{marginBottom:20, marginLeft:20, marginRight:20}}>
                 <View style={{ alignItems:'center'}}>
                     <Text style={text.case_text}> {this.state.case.descricao} </Text>
-                    <Button2
-                        value="Revelar solução do caso" 
-                        onPress={this.reveal}
-                        height={50} 
-                        width={250}
-                        fontSize={18}
-                    />
                 </View>
             </ScrollView>
         </View>

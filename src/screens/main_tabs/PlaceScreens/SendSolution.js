@@ -91,6 +91,7 @@ export default class SendSolution extends Component {
                     height={60}
                     width={300}
                     onPress={this.reveal}
+                    placeholder="Escreva aqui sua solução"
                 />
             </View>
         )

@@ -101,7 +101,7 @@ export default class CreateRoom extends Component {
                 />
                 <NavigationEvents onDidFocus={ this.loadScreen } />
                 <Input 
-                    placeholder= "Procurar caso"
+                    title= "Procurar caso"
                     placeholderColor="#774F38" 
                     onChangeText={(search_text) => { this.setState({search_text}); this.searchCases(); }}
                 />
