@@ -3,6 +3,7 @@ import InicialScreen from './screens/InicialScreen';
 import MainScreen from './screens/MainScreen';
 import LoadingScreen from './screens/LoadingScreen';
 import MainTabs from './screens/MainTabs';
+import SignUp from './screens/SignUp';
 
 const AppNavigator = createStackNavigator({
     LoadingScreen:{
@@ -28,6 +29,9 @@ const AppNavigator = createStackNavigator({
         navigationOptions: ({ navigation }) => ({
             header: null,
         }),
+    },
+    SignUp:{
+        screen:SignUp,
     },
 });
 export const AppContainer = createAppContainer(AppNavigator);

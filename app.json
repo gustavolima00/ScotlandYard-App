@@ -16,7 +16,7 @@
     ],
     "android": {
       "package": "com.gustavolima00.scotlandgame",
-      "permissions": []
+      "permissions": []    
     },
     "version": "1.0.0",
     "orientation": "portrait",

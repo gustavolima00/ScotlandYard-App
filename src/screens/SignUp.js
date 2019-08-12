@@ -3,17 +3,18 @@ import Input from '../components/Input'
 import Button1 from '../components/Button1'
 import {container, text, IMAGE_HEIGHT, IMAGE_HEIGHT_SMALL} from '../style/Styles'
 import { View, Animated, Keyboard, KeyboardAvoidingView, Image, Alert, Platform } from 'react-native';
-import { API_URL, signin } from '../helpers/Requests'
+import { API_URL } from '../helpers/Requests'
 import { onSignIn } from "../helpers/AuthMethods";
 import axios from 'axios'
 import Spinner from 'react-native-loading-spinner-overlay';
 
-export default class InicialScreen extends Component {
+export default class SignUp extends Component {
     constructor(props) {
         super(props);
         this.imageHeight = new Animated.Value(IMAGE_HEIGHT);
         this.state = {
             email:'',
+            name:'',email,
             password:'',
             spinner: false,
         }
@@ -39,13 +40,15 @@ export default class InicialScreen extends Component {
             toValue: IMAGE_HEIGHT,
         }).start();
     };
-    login = async () => {
+    signin = async () => {
         this.setState({ spinner: true });
-        const login_path = `${API_URL}/auth/token_obtain/`;
+        const login_path = `${API_URL}/auth/registration/`;
         var self = this;
         axios.post(login_path ,{
             'username': this.state.email,
-            'password': this.state.password,
+            'email': this.state.email,
+            'password1': this.state.password,
+            'password2': this.state.password,
         })
         .then (function (response) {
             self.setState({ spinner: false });
@@ -61,29 +64,13 @@ export default class InicialScreen extends Component {
             console.log(error)
             if(error.response===undefined)
                 Alert.alert('Erro', 'Erro na conexão com o servidor')
-            else if(error.response.data.username!==undefined) 
-                Alert.alert('Erro no campo de Email', error.response.data.username[0])
-            else if(error.response.data.password!==undefined) 
-                Alert.alert('Erro no campo da Senha', error.response.data.password[0])
-            else if(error.response.data.non_field_errors !== undefined)
+            else if(error.response.data.password1!=undefined) 
+                Alert.alert('Erro no campo da Senha', error.response.data.password1[0])
+            else if(error.response.data.email!=undefined) 
+                Alert.alert('Erro no campo de Email', error.response.data.email[0])
+            else if(error.response.data.non_field_errors != undefined)
                 Alert.alert('Erro', error.response.data.non_field_errors[0])
         })
-    }
-    on_sign(){
-        alert.Alert('sign');
-    }
-    err_sign(){
-        alert.Alert('Error');
-    }
-
-    signIn = async () => {
-        let data = {
-            'username': this.state.email,
-            'email': this.state.email,
-            'password1': this.state.password,
-            'password2': this.state.password,
-        };
-        signin(data, this.on_sign, this.err_sign)
     }
     render() {
         return (
@@ -99,11 +86,13 @@ export default class InicialScreen extends Component {
                     source={require('../img/detective.png')}
                 />
                 <View>
+                    <Input title={'Nome'} onChangeText={(name) => this.setState({name})}/>
                     <Input title={'Email'} onChangeText={(email) => this.setState({email})}/>
                     <Input title={'Senha'} secureTextEntry={true} onChangeText={(password) => this.setState({password})}/>
                 </View>
                 <View style={{flexDirection:'row', marginBottom:20}}> 
-                    <Button1 value="Criar Conta" onPress={this.signIn} />
+                    <Button1 value="Criar Conta" onPress={this.signin} />
+                    <Button1 value="Entrar" onPress={this.login} />
                 </View>
             </KeyboardAvoidingView>
         )
