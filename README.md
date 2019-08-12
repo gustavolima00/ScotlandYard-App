@@ -2,9 +2,6 @@
 <img src="icon.png" width="400"/>
 </p>
 
-[Link para wiki](https://gustavolima00.github.io/ScotlandYard/index.html)
-
-
 # ScotlandYard App
 
 ## O que é o ScotlandYard
