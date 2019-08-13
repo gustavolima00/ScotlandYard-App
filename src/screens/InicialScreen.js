@@ -69,22 +69,6 @@ export default class InicialScreen extends Component {
                 Alert.alert('Erro', error.response.data.non_field_errors[0])
         })
     }
-    on_sign(){
-        alert.Alert('sign');
-    }
-    err_sign(){
-        alert.Alert('Error');
-    }
-
-    signIn = async () => {
-        let data = {
-            'username': this.state.email,
-            'email': this.state.email,
-            'password1': this.state.password,
-            'password2': this.state.password,
-        };
-        signin(data, this.on_sign, this.err_sign)
-    }
     render() {
         return (
             <KeyboardAvoidingView behavior="padding" style={[container.backgroud_1, { flex:1, justifyContent: 'space-between' }]}>
@@ -103,7 +87,8 @@ export default class InicialScreen extends Component {
                     <Input title={'Senha'} secureTextEntry={true} onChangeText={(password) => this.setState({password})}/>
                 </View>
                 <View style={{flexDirection:'row', marginBottom:20}}> 
-                    <Button1 value="Criar Conta" onPress={this.signIn} />
+                    <Button1 value="Criar Conta" onPress={() => this.props.navigation.navigate('SignUp')} />
+                    <Button1 value="Entrar" onPress={this.login} />
                 </View>
             </KeyboardAvoidingView>
         )

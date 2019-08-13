@@ -1,7 +1,7 @@
 export const API_URL = 'http://scotland.herokuapp.com'
 //export const API_URL = 'http://192.168.0.108:8001'
 
-export default signin = async (data, func, err) => {
+export default signIn = async (data, func, err) => {
     this.setState({ spinner: true });
     const login_path = `${API_URL}/auth/registration/`;
     var self = this;

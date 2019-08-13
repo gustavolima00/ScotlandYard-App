@@ -14,32 +14,13 @@ export default class SignUp extends Component {
         this.imageHeight = new Animated.Value(IMAGE_HEIGHT);
         this.state = {
             email:'',
-            name:'',email,
+            name:'',
+            email: '',
             password:'',
+            token: undefined,
             spinner: false,
         }
     }
-    componentDidMount() {
-        this.keyboardDidShowSub = Keyboard.addListener('keyboardDidShow', this.keyboardDidShow);
-        this.keyboardDidHideSub = Keyboard.addListener('keyboardDidHide', this.keyboardDidHide); 
-    }
-    componentWillUnmount() {
-        this.keyboardDidShowSub.remove();
-        this.keyboardDidHideSub.remove();
-        this.setState({ spinner: false });
-    }
-    keyboardDidShow = (event) => {
-        Animated.timing(this.imageHeight, {
-            duration: 300,
-            toValue: IMAGE_HEIGHT_SMALL,
-        }).start();
-    };
-    keyboardDidHide = (event) => {
-        Animated.timing(this.imageHeight, {
-            duration: 300,
-            toValue: IMAGE_HEIGHT,
-        }).start();
-    };
     signin = async () => {
         this.setState({ spinner: true });
         const login_path = `${API_URL}/auth/registration/`;
@@ -56,6 +37,8 @@ export default class SignUp extends Component {
             console.log('response.status', response.status)
             if(response.status>= 200 && response.status<300){
                 onSignIn(response.data.token);
+                self.setState({token:response.data['token']})
+                self.update_user()
                 self.props.navigation.navigate('MainScreen');
             }
         })
@@ -72,6 +55,25 @@ export default class SignUp extends Component {
                 Alert.alert('Erro', error.response.data.non_field_errors[0])
         })
     }
+    update_user = async () =>{
+        this.setState({ spinner: true });
+        const update_path = `${API_URL}/player/update/`;
+        var self = this;
+        axios.post(update_path ,{
+            'token': this.state.token,
+            'name': this.state.name,
+        })
+        .then (function (response) {
+          self.setState({ spinner: false });
+          console.log('response.data', response.data)
+          console.log('response.status', response.status)
+        })
+        .catch(function (error) {
+          self.setState({ spinner: false });
+          if(error.response===undefined)
+            Alert.alert('Erro', 'Erro na conexão com o servidor')
+        })
+      }
     render() {
         return (
             <KeyboardAvoidingView behavior="padding" style={[container.backgroud_1, { flex:1, justifyContent: 'space-between' }]}>
@@ -81,10 +83,6 @@ export default class SignUp extends Component {
                     textContent={'Carregando...'}
                     textStyle={text.normal_1}
                 />           
-                <Animated.Image
-                    style={{width: this.imageHeight, height:this.imageHeight}}
-                    source={require('../img/detective.png')}
-                />
                 <View>
                     <Input title={'Nome'} onChangeText={(name) => this.setState({name})}/>
                     <Input title={'Email'} onChangeText={(email) => this.setState({email})}/>
@@ -92,7 +90,6 @@ export default class SignUp extends Component {
                 </View>
                 <View style={{flexDirection:'row', marginBottom:20}}> 
                     <Button1 value="Criar Conta" onPress={this.signin} />
-                    <Button1 value="Entrar" onPress={this.login} />
                 </View>
             </KeyboardAvoidingView>
         )

@@ -157,12 +157,14 @@ export default class PlaceDetails extends Component {
                 <View style={{ justifyContent:'center', flex:1, padding:10}}>
                     <Text style={[text.normal_2, {textAlign:'center'}]}> {this.state.message} </Text>
                 </View>
+                { !this.state.unlocked &&
                 <Button2 
                     value={this.state.button_text}
                     height={60}
                     width={300}
                     onPress={this.changeState}
                 />
+                }
             </View>
         )
     }
