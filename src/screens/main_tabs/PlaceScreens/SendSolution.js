@@ -38,6 +38,7 @@ export default class SendSolution extends Component {
         var self = this;
         axios.post(send_solution_path ,{
             'token': this.state.token,
+            'solution':this.state.solution
         })
         .then (function (response) {
           self.setState({ spinner: false });

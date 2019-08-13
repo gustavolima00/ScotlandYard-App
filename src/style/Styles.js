@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import Constants from 'expo-constants'
+import {Dimensions } from "react-native";
 
 export const IMAGE_HEIGHT = 250
 export const IMAGE_HEIGHT_SMALL = 100
@@ -57,8 +57,9 @@ export const container = StyleSheet.create({
     },
     touch_card:{
         backgroundColor: "#774F38",
-        height: 60,
-        width: 150,
+        padding:10,
+        flex: 1,
+        width: Dimensions.get('window').width-40,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 10,
